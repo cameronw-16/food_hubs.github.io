@@ -2,9 +2,9 @@
 
 10/19/20 - Several Ideas/Drafts
 
-                        Various Ideas                    
+:                        Various Ideas                    :
 : -------------------------- | -------------------------- :
-: ![Map D1](cae_map_D1.png)  | ![Map D2](cae_map_D2.pdf)  :
+: <img src="cae_map_D1.png" width="100" height="100">  | <img src="cae_map_D2.pdf" width="100" height="100">  :
 : ![Map D3](cae_map_D3.png)  | ![Map D4](cae_map_D4.png)  :
 
 

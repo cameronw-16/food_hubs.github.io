@@ -5,8 +5,8 @@
 
 |                        Various Ideas                 |                                                      |
 | ---------------------------------------------------- | -----------------------------------------------------|
-| <img src="cae_map_D1.png" width="464" height="600">  | <img src="cae_map_D2.png" width="464" height="600">  |
-| <img src="cae_map_D3.png" width="464" height="600">  | <img src="cae_map_D4.png" width="464" height="600">  |
+| <img src="cae_map_D1.png" width="464" height="580">  | <img src="cae_map_D2.png" width="464" height="580">  |
+| <img src="cae_map_D3.png" width="464" height="580">  | <img src="cae_map_D4.png" width="464" height="580">  |
 
 
 

@@ -1,10 +1,11 @@
 ### Food Hubs Maps Updates
 
 10/19/20 - Several Ideas/Drafts
-|                        Various Ideas                    |
-| -------------------------- | -------------------------- |
-| ![Map D1](cae_map_D1.png)  | ![Map D2](cae_map_D2.pdf)  |
-| ![Map D3](cae_map_D3.png)  | ![Map D4](cae_map_D4.png)  |
+
+                        Various Ideas                    
+: -------------------------- | -------------------------- :
+: ![Map D1](cae_map_D1.png)  | ![Map D2](cae_map_D2.pdf)  :
+: ![Map D3](cae_map_D3.png)  | ![Map D4](cae_map_D4.png)  :
 
 
 

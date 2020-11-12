@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/VT_Data__State_Boundary_1.js"></script>
+        <script src="data/StateHWY_2.js"></script>
+        <script src="data/InterstateHWY_3.js"></script>
+        <script src="data/state_rds_4.js"></script>
+        <script src="data/VTFoodHubCollaborative_5.js"></script>
+        <script src="data/VTFoodHubs_6.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+            map.setMaxBounds(map.getBounds());
+        }
+        map.createPane('pane_OSMStandard_0');
+        map.getPane('pane_OSMStandard_0').style.zIndex = 400;
+        var layer_OSMStandard_0 = L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OSMStandard_0',
+            opacity: 0.629,
+            attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OSMStandard_0;
+        map.addLayer(layer_OSMStandard_0);
+        function pop_VT_Data__State_Boundary_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['OBJECTID'] !== null ? autolinker.link(feature.properties['OBJECTID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['STATEGEOID'] !== null ? autolinker.link(feature.properties['STATEGEOID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ShapeSTAre'] !== null ? autolinker.link(feature.properties['ShapeSTAre'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ShapeSTLen'] !== null ? autolinker.link(feature.properties['ShapeSTLen'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VT_Data__State_Boundary_1_0() {
+            return {
+                pane: 'pane_VT_Data__State_Boundary_1',
+                opacity: 1,
+                color: 'rgba(120,121,107,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 5.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,255,1.0)',
+                interactive: false,
+            }
+        }
+        map.createPane('pane_VT_Data__State_Boundary_1');
+        map.getPane('pane_VT_Data__State_Boundary_1').style.zIndex = 401;
+        map.getPane('pane_VT_Data__State_Boundary_1').style['mix-blend-mode'] = 'normal';
+        var layer_VT_Data__State_Boundary_1 = new L.geoJson(json_VT_Data__State_Boundary_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_VT_Data__State_Boundary_1',
+            layerName: 'layer_VT_Data__State_Boundary_1',
+            pane: 'pane_VT_Data__State_Boundary_1',
+            onEachFeature: pop_VT_Data__State_Boundary_1,
+            style: style_VT_Data__State_Boundary_1_0,
+        });
+        bounds_group.addLayer(layer_VT_Data__State_Boundary_1);
+        map.addLayer(layer_VT_Data__State_Boundary_1);
+        function pop_StateHWY_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LINEARID'] !== null ? autolinker.link(feature.properties['LINEARID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FULLNAME'] !== null ? autolinker.link(feature.properties['FULLNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RTTYP'] !== null ? autolinker.link(feature.properties['RTTYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MTFCC'] !== null ? autolinker.link(feature.properties['MTFCC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_StateHWY_2_0() {
+            return {
+                pane: 'pane_StateHWY_2',
+                opacity: 1,
+                color: 'rgba(194,173,104,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_StateHWY_2');
+        map.getPane('pane_StateHWY_2').style.zIndex = 402;
+        map.getPane('pane_StateHWY_2').style['mix-blend-mode'] = 'normal';
+        var layer_StateHWY_2 = new L.geoJson(json_StateHWY_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_StateHWY_2',
+            layerName: 'layer_StateHWY_2',
+            pane: 'pane_StateHWY_2',
+            onEachFeature: pop_StateHWY_2,
+            style: style_StateHWY_2_0,
+        });
+        bounds_group.addLayer(layer_StateHWY_2);
+        map.addLayer(layer_StateHWY_2);
+        function pop_InterstateHWY_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LINEARID'] !== null ? autolinker.link(feature.properties['LINEARID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FULLNAME'] !== null ? autolinker.link(feature.properties['FULLNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RTTYP'] !== null ? autolinker.link(feature.properties['RTTYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MTFCC'] !== null ? autolinker.link(feature.properties['MTFCC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_InterstateHWY_3_0() {
+            return {
+                pane: 'pane_InterstateHWY_3',
+                opacity: 1,
+                color: 'rgba(194,173,104,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_InterstateHWY_3');
+        map.getPane('pane_InterstateHWY_3').style.zIndex = 403;
+        map.getPane('pane_InterstateHWY_3').style['mix-blend-mode'] = 'normal';
+        var layer_InterstateHWY_3 = new L.geoJson(json_InterstateHWY_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_InterstateHWY_3',
+            layerName: 'layer_InterstateHWY_3',
+            pane: 'pane_InterstateHWY_3',
+            onEachFeature: pop_InterstateHWY_3,
+            style: style_InterstateHWY_3_0,
+        });
+        bounds_group.addLayer(layer_InterstateHWY_3);
+        map.addLayer(layer_InterstateHWY_3);
+        function pop_state_rds_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['LINEARID'] !== null ? autolinker.link(feature.properties['LINEARID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['FULLNAME'] !== null ? autolinker.link(feature.properties['FULLNAME'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['RTTYP'] !== null ? autolinker.link(feature.properties['RTTYP'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['MTFCC'] !== null ? autolinker.link(feature.properties['MTFCC'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_state_rds_4_0() {
+            return {
+                pane: 'pane_state_rds_4',
+                opacity: 1,
+                color: 'rgba(190,207,80,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_state_rds_4');
+        map.getPane('pane_state_rds_4').style.zIndex = 404;
+        map.getPane('pane_state_rds_4').style['mix-blend-mode'] = 'normal';
+        var layer_state_rds_4 = new L.geoJson(json_state_rds_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_state_rds_4',
+            layerName: 'layer_state_rds_4',
+            pane: 'pane_state_rds_4',
+            onEachFeature: pop_state_rds_4,
+            style: style_state_rds_4_0,
+        });
+        bounds_group.addLayer(layer_state_rds_4);
+        map.addLayer(layer_state_rds_4);
+        function pop_VTFoodHubCollaborative_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VTFoodHubCollaborative_5_0() {
+            return {
+                pane: 'pane_VTFoodHubCollaborative_5',
+                opacity: 1,
+                color: 'rgba(120,19,85,1.0)',
+                dashArray: '10,5',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_VTFoodHubCollaborative_5');
+        map.getPane('pane_VTFoodHubCollaborative_5').style.zIndex = 405;
+        map.getPane('pane_VTFoodHubCollaborative_5').style['mix-blend-mode'] = 'normal';
+        var layer_VTFoodHubCollaborative_5 = new L.geoJson(json_VTFoodHubCollaborative_5, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_VTFoodHubCollaborative_5',
+            layerName: 'layer_VTFoodHubCollaborative_5',
+            pane: 'pane_VTFoodHubCollaborative_5',
+            onEachFeature: pop_VTFoodHubCollaborative_5,
+            style: style_VTFoodHubCollaborative_5_0,
+        });
+        bounds_group.addLayer(layer_VTFoodHubCollaborative_5);
+        map.addLayer(layer_VTFoodHubCollaborative_5);
+        function pop_VTFoodHubs_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['address'] !== null ? autolinker.link(feature.properties['address'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['website'] !== null ? autolinker.link(feature.properties['website'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VTFoodHubs_6_0() {
+            return {
+                pane: 'pane_VTFoodHubs_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/shopping_greengrocer.svg',
+            iconSize: [25.08, 25.08]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_VTFoodHubs_6');
+        map.getPane('pane_VTFoodHubs_6').style.zIndex = 406;
+        map.getPane('pane_VTFoodHubs_6').style['mix-blend-mode'] = 'normal';
+        var layer_VTFoodHubs_6 = new L.geoJson(json_VTFoodHubs_6, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_VTFoodHubs_6',
+            layerName: 'layer_VTFoodHubs_6',
+            pane: 'pane_VTFoodHubs_6',
+            onEachFeature: pop_VTFoodHubs_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_VTFoodHubs_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_VTFoodHubs_6);
+        map.addLayer(layer_VTFoodHubs_6);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/VTFoodHubs_6.png" /> VT Food Hubs': layer_VTFoodHubs_6,'<img src="legend/VTFoodHubCollaborative_5.png" /> VT Food Hub Collaborative': layer_VTFoodHubCollaborative_5,'<img src="legend/state_rds_4.png" /> state_rds': layer_state_rds_4,'<img src="legend/InterstateHWY_3.png" /> Interstate HWY': layer_InterstateHWY_3,'<img src="legend/StateHWY_2.png" /> State HWY': layer_StateHWY_2,'<img src="legend/VT_Data__State_Boundary_1.png" /> VT_Data_-_State_Boundary': layer_VT_Data__State_Boundary_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_VTFoodHubs_6.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['name_1'] !== null?String('<div style="color: #472929; font-size: 10pt; font-family: \'.SF NS Text\', sans-serif;">' + layer.feature.properties['name_1']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_VTFoodHubs_6'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_VTFoodHubs_6]);
+        map.on("zoomend", function(){
+            resetLabels([layer_VTFoodHubs_6]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_VTFoodHubs_6]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_VTFoodHubs_6]);
+        });
+        </script>
+    </body>
+</html>
